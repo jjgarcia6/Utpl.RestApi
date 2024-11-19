@@ -4,43 +4,43 @@ from typing import List
 
 app = FastAPI()
 
-# Definición de un modelo Pydantic llamado "Item" con tres campos: id, name y price.
-class Articulo(BaseModel):
+# Definición de un modelo Pydantic llamado "Orden" con dos campos.
+class Orden(BaseModel):
     id: int
-    nombre: str
-    precio: float
+    producto: str
+    cantidad: float
 
-# Lista vacía para almacenar los artículos creados.s
-articulos = []
+# Lista vacía para almacenar los artículos creados.
+ordenes = []
 
 # Ruta para la página de inicio que devuelve un mensaje de bienvenida.
 @app.get('/')
 def bienvenida():
-    return {'mensaje': 'Bienvenido a mi aplicación FastAPI'}
+    return {'mensaje': 'Bienvenido a mi aplicación FastAPI Utpl'}
 
 # Ruta para obtener todos los artículos almacenados en la lista.
-# El parámetro "response_model" especifica que la respuesta será una lista de objetos "Articulo".
-@app.get("/articulos", response_model=List[Articulo])
-async def leer_articulos():
-    return articulos
+# El parámetro "response_model" especifica que la respuesta será una lista de objetos "Orden".
+@app.get("/ordenes", response_model=List[Orden])
+async def leer_ordenes():
+    return ordenes
 
 # Ruta para crear un nuevo artículo.
-# El parámetro "response_model" especifica que la respuesta será un objeto "Articulo".
-@app.post("/articulos", response_model=Articulo)
-async def crear_articulo(articulo: Articulo):
-    articulos.append(articulo)  # Agrega el artículo a la lista.
-    return articulo
+# El parámetro "response_model" especifica que la respuesta será un objeto "Orden".
+@app.post("/ordenes", response_model=Orden)
+async def crear_orden(orden: Orden):
+    ordenes.append(orden)  # Agrega el artículo a la lista.
+    return orden
 
-# Ruta para actualizar un artículo existente por su ID.
-# El parámetro "response_model" especifica que la respuesta será un objeto "Articulo".
-@app.put("/articulos/{articulo_id}", response_model=Articulo)
-async def actualizar_articulo(articulo_id: int, articulo: Articulo):
-    articulos[articulo_id] = articulo  # Actualiza el artículo en la lista.
-    return articulo
+# Ruta para actualizar una orden existente por su ID.
+# El parámetro "response_model" especifica que la respuesta será un objeto "Orden".
+@app.put("/ordenes/{orden_id}", response_model=Orden)
+async def actualizar_orden(orden_id: int, orden: Orden):
+    ordenes[orden_id] = orden  # Actualiza la orden en la lista.
+    return orden
 
-# Ruta para eliminar un artículo por su ID.
+# Ruta para eliminar una orden por su ID.
 # No se especifica "response_model" ya que no se devuelve ningún objeto en la respuesta.
-@app.delete("/articulos/{articulo_id}")
-async def eliminar_articulo(articulo_id: int):
-    del articulos[articulo_id]  # Elimina el artículo de la lista.
-    return {"mensaje": "Artículo eliminado"}  # Devuelve un mensaje informativo.
+@app.delete("/ordenes/{orden_id}")
+async def eliminar_orden(orden_id: int):
+    del ordenes[orden_id]  # Elimina el item de la lista.
+    return {"mensaje": "Orden eliminada"}  # Devuelve un mensaje informativo.
