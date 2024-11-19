@@ -16,7 +16,7 @@ ordenes = []
 # Ruta para la página de inicio que devuelve un mensaje de bienvenida.
 @app.get('/')
 def bienvenida():
-    return {'mensaje': 'Bienvenido a mi aplicación FastAPI Utpl'}
+    return {'mensaje': 'Bienvenido a mi aplicación FastAPI Utpl 2024'}
 
 # Ruta para obtener todos los artículos almacenados en la lista.
 # El parámetro "response_model" especifica que la respuesta será una lista de objetos "Orden".
