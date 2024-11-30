@@ -1,0 +1,91 @@
+workspace "Plataforma de comercio electronico" {
+
+    !identifiers hierarchical
+    
+    description "Una API para gestionar productos"
+    
+    model {
+        pCliente = person "Usuario final"
+        pAdministrador = person "Administrador del comercio"
+        sErp = softwareSystem "ERP EMPRESARIAL"
+        ssProductos = softwareSystem "Plataforma de gestión de comercio" {
+            
+            
+            wepAppGestion = container "Web de gestión" {
+                tags "AppWeb"
+                technology "SPA Angular 16"
+                description "Sitio web para la administración de parámertros del sistema"
+            }
+            
+            wepAppCompras = container "Web de compras" {
+                tags "AppWeb"
+                technology "SPA Angular 16"
+                description "Sitio web para solicitar ordenes"
+            }
+            
+            apiCompras = container "Api de compras" {
+                tags "Api"
+                technology "Python 3"
+                description "API REST para la consulta y envío de información a la base de datos"
+                seguridadComponent = component "Componente de Seguridad" "Provides functionality related to signing in, changing passwords, etc." "Fast Security / Python 3"
+                emailComponent = component "E-mail Component" "Envia notificaciones a los clientes" "Python Email"
+                telegramComponent = component "Telegram Component" "Envia notificaciones a los clientes por telegram" "Python Notified"
+            }
+            
+            db = container "Base de datos" {
+                tags "Database"
+                technology "Oracle 20g"
+            }
+        }
+
+        pCliente -> ssProductos.wepAppCompras "Interactúa con la app para crear, leer, actualizar y eliminar órdenes"
+        pAdministrador -> ssProductos.wepAppGestion "Configura la API y monitorea su funcionamiento"
+        sErp -> ssProductos.apiCompras "Interactúa con la app para gestion de inventario"
+        
+        ssProductos.apiCompras -> ssProductos.db "Lee y escribe informacion a"
+        ssProductos.wepAppGestion -> ssProductos.apiCompras "Lee / escribe a " "https"
+        ssProductos.wepAppCompras -> ssProductos.apiCompras "Lee / escribe a " "https"
+    }
+
+    views {
+        systemContext ssProductos {
+            include *
+            autolayout lr
+        }
+
+        container ssProductos {
+            include *
+            autolayout lr
+        }
+        
+        component ssProductos.apiCompras {
+            include *
+            autolayout lr
+        }
+
+        styles {
+            element "Element" {
+                color #ffffff
+            }
+            element "Person" {
+                background #741eba
+                shape person
+            }
+            element "Software System" {
+                background #8723d9
+            }
+            element "Container" {
+                background #9a28f8
+            }
+            element "Database" {
+                shape cylinder
+            }
+        }
+        
+        
+    }
+
+    configuration {
+        scope softwaresystem
+    }
+}
