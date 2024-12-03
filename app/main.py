@@ -34,6 +34,7 @@ async def leer_ordenes():
 @app.post("/ordenes", response_model=Orden)
 async def crear_orden(orden: Orden):
     ordenes.append(orden)  # Agrega el artículo a la lista.
+
     return orden
 
 # Ruta para actualizar una orden existente por su ID.
