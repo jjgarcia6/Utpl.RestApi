@@ -1,64 +1,80 @@
-workspace "Plataforma de comercio electronico" {
+workspace "Plataforma de Comercio Electronico" {
 
     !identifiers hierarchical
     
-    description "Una API para gestionar productos"
+    description "Diagrama de interaccion de componentes de Plataforma de Comercio Electronico"
     
     model {
-        pCliente = person "Usuario final"
-        pAdministrador = person "Administrador del comercio"
-        sErp = softwareSystem "ERP EMPRESARIAL"
-        ssProductos = softwareSystem "Plataforma de gestión de comercio" {
+        pCliente = person "Usuario Final"
+        pAdministrador = person "Administrador de Plataforma Digital"
+        sErp = softwareSystem "KERP ERP EMPRESARIAL"
+        ssPlataforma = softwareSystem "Plataforma de Gestión de Comercio Electronico" {
             
             
-            wepAppGestion = container "Web de gestión" {
-                tags "AppWeb"
+            portalManagement = container "Portal de Gestión" {
+                tags "Portal"
                 technology "SPA Angular 16"
-                description "Sitio web para la administración de parámertros del sistema"
+                description "Aplicaciones para la Administración de parámetros de la Plataforma"
+                webComponent = component "Web de Administracion" "Sitio web para administar plataforma" "Compatibilidad con navegadores web"
+                appComponent = component "App de Administracion" "App movil para administrar plataforma" "APP para Android e IOS"
+                
             }
             
-            wepAppCompras = container "Web de compras" {
-                tags "AppWeb"
+            portalShopping = container "Portal de Compras" {
+                tags "Portal"
                 technology "SPA Angular 16"
-                description "Sitio web para solicitar ordenes"
+                description "Aplicaciones para realizar compras"
+                webComponent = component "Web de Compra" "Sitio web para compra de productos" "Web para PC/Laptop"
+                appComponent = component "App de Compra" "App movil para compra de productos" "Aplicacion para celular/tablet"
             }
             
-            apiCompras = container "Api de compras" {
-                tags "Api"
+            apiInventario = container "Api de Inventario" {
+                tags "API"
                 technology "Python 3"
-                description "API REST para la consulta y envío de información a la base de datos"
-                seguridadComponent = component "Componente de Seguridad" "Provides functionality related to signing in, changing passwords, etc." "Fast Security / Python 3"
-                emailComponent = component "E-mail Component" "Envia notificaciones a los clientes" "Python Email"
-                telegramComponent = component "Telegram Component" "Envia notificaciones a los clientes por telegram" "Python Notified"
+                description "API REST para la consulta y actualizacion de información de inventario a la base de datos"
+                securityComponent = component "Componente de Seguridad" "Establece el cifrado entre las bases durante los procesos del API" "Fast Security / Python 3"
+                emailComponent = component "E-mail Component" "Envia notificaciones indicando el resultado en la ejecucion del proceso"
+                processComponent = component "Consulta de Inventario" "Verifica si existen diferencias entre el inventario del ERP y el inventario de la Plataforma"
+                updateComponent = component "Actualizacion de Inventario" "Actualiza el inventario de la Plataforma con los datos del ERP"
             }
             
             db = container "Base de datos" {
                 tags "Database"
-                technology "Oracle 20g"
+                technology "Atlas MongoDB"
             }
         }
 
-        pCliente -> ssProductos.wepAppCompras "Interactúa con la app para crear, leer, actualizar y eliminar órdenes"
-        pAdministrador -> ssProductos.wepAppGestion "Configura la API y monitorea su funcionamiento"
-        sErp -> ssProductos.apiCompras "Interactúa con la app para gestion de inventario"
+        pCliente -> ssPlataforma.portalShopping "Interaccion para la compra en plataforma digital"
+        pAdministrador -> ssPlataforma.portalManagement "Administra y monitorea el funcionamiento de la plataforma"
+        sErp -> ssPlataforma.apiInventario "Interaccion para gestionar inventario"
         
-        ssProductos.apiCompras -> ssProductos.db "Lee y escribe informacion a"
-        ssProductos.wepAppGestion -> ssProductos.apiCompras "Lee / escribe a " "https"
-        ssProductos.wepAppCompras -> ssProductos.apiCompras "Lee / escribe a " "https"
+        ssPlataforma.apiInventario -> ssPlataforma.db "Lee y escribe informacion a"
+        ssPlataforma.portalManagement -> ssPlataforma.apiInventario "Lee / escribe a " "https"
+        ssPlataforma.portalShopping -> ssPlataforma.apiInventario "Lee / escribe a " "https"
     }
 
     views {
-        systemContext ssProductos {
+        systemContext ssPlataforma {
             include *
             autolayout lr
         }
 
-        container ssProductos {
+        container ssPlataforma {
             include *
             autolayout lr
         }
         
-        component ssProductos.apiCompras {
+        component ssPlataforma.apiInventario {
+            include *
+            autolayout lr
+        }
+        
+        component ssPlataforma.portalManagement {
+            include *
+            autolayout lr
+        }
+
+        component ssPlataforma.portalShopping {
             include *
             autolayout lr
         }
@@ -68,17 +84,18 @@ workspace "Plataforma de comercio electronico" {
                 color #ffffff
             }
             element "Person" {
-                background #741eba
+                background #5d6d7e
                 shape person
             }
             element "Software System" {
-                background #8723d9
+                background #82e0aa
             }
             element "Container" {
-                background #9a28f8
+                background #85c1e9
             }
             element "Database" {
                 shape cylinder
+                background #1a5276
             }
         }
         
