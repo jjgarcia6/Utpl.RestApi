@@ -64,6 +64,8 @@ async def crear_inventario(inventario: Inventario):
 async def actualizar_inventario(inventario_id: int, inventario: Inventario):
     # Actualiza el inventario en la lista.
     inventarios[inventario_id] = inventario
+    """Para actualizar un item de la lista no es el id de la clase
+    sino la posicion en la lista empieza desde 0"""
     return inventario
 
 # Ruta para eliminar una orden por su ID.
