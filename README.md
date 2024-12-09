@@ -36,7 +36,9 @@ Descripción: Crea un nuevo inventario.
 Cuerpo de la solicitud:
 
 Ejemplo: 
+**JSON** 
 
+```json
 {
   "id": 1,
   "codigo": "ABC123",
