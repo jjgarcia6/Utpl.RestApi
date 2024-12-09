@@ -37,7 +37,7 @@ inventarios = []
 
 @app.get('/')
 def bienvenida():
-    return {'mensaje': 'Bienvenidos a mi API FastAPI Interoperabilidad Empresarial Diciembre 2024'}
+    return {'mensaje': 'Bienvenidos a mi API Interoperabilidad Empresarial - ABC Motor'}
 
 
 # Ruta para obtener todos los artículos almacenados en la lista.
