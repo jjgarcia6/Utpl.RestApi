@@ -2,12 +2,19 @@
    gestion de inventarios de ABC Motor
 """
 
+""" Pasos para ejecutar la aplicacion:
+    1. Ejecute el siguiente comando en una terminal para inicar la aplicacion
+       uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    2. Vaya a PORTS y cambie el puerto 8000 de privado a publico
+    3. Forwarded Address le asignara una direccion de clic en Open in Browser
+"""
+
 # Declaracion de librerias
+
+# Inicialización de la aplicación FastAPI
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
-
-# Creacion de la aplicacion FastAPI
 app = FastAPI()
 
 # Clase que define la estructura de un inventario
@@ -15,10 +22,8 @@ app = FastAPI()
 
 class Inventario(BaseModel):
     id: int
-    codigo: str
-    descripcion: str
+    detalle: str
     familia: str
-    clase: str
     cantidad: float
     precio: float
     total: float
