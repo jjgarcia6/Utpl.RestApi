@@ -48,7 +48,7 @@ Ejemplo:
   "cantidad": 3,
   "precio": 50.0,
   "total": 150.0
-}
+}```
 
 
 **Actualizar un inventario**
@@ -58,7 +58,9 @@ Descripción: Actualiza un inventario existente por su ID.
 Cuerpo de la solicitud:
 
 Ejemplo:
+**JSON**
 
+```json
 {
   "id": 1,
   "codigo": "ABC123",
