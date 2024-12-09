@@ -23,6 +23,9 @@ Proyecto para trabajar con API en REST utilizando FastAPI
 
 **La API de Gestión de Inventarios está diseñada para facilitar la administración de inventarios de ABC Motor**. Utiliza FastAPI, un framework moderno y de alto rendimiento para construir APIs con Python.
 
+![Pantalla de FastAPI con los metodos](/images/01_main.PNG)
+
+
 ## Endpoints
 Los metodos que se usaron son los siguientes:
 
@@ -43,19 +46,19 @@ Ejemplo:
 ```json
 {
   "id": 1,
-  "detalle": "Llanta 175/70R13",
-  "familia": "Llantas",
-  "cantidad": 3,
-  "precio": 50.0,
-  "total": 150.0
+  "detalle": "Foco LED",
+  "familia": "Accesorios",
+  "cantidad": 10,
+  "precio": 1,
+  "total": 10
 }
 ```
 
 
 **3) Actualizar un inventario**  
-URL: /inventarios/{inventario_id}  
-Método: PUT  
-Descripción: Actualiza un inventario existente por su ID.  
+URL: `/inventarios/{inventario_id}` 
+Método: `PUT`  
+Descripción: Para actualizar el item de la lista no es el id de la clase sino la posición en la lista empieza desde CERO.  
 Cuerpo de la solicitud:  
 
 Ejemplo:  
@@ -63,19 +66,19 @@ Ejemplo:
 ```json
 {
   "id": 1,
-  "detalle": "Llanta 175/70R13",
-  "familia": "Llantas",
-  "cantidad": 4,
-  "precio": 50.0,
-  "total": 150.0
+  "detalle": "Foco LED",
+  "familia": "Accesorios",
+  "cantidad": 5,
+  "precio": 1,
+  "total": 5
 }
 ```
 
 
-**Eliminar un inventario**  
+**4) Eliminar un inventario**  
 URL: `/inventarios/{inventario_id}`  
 Método: `DELETE`  
-Descripción: Elimina un inventario por su ID. Para eliminar el item de la lista no es el id de la clase sino la posición en la lista empieza desde CERO.  
+Descripción: Para eliminar el item de la lista no es el id de la clase sino la posición en la lista empieza desde CERO.  
 
 
 ## Ejecucion
@@ -94,6 +97,9 @@ A continuacion vamos a documentar las pruebas realizadas con Postman para la API
 **Método**: `GET`  
 **Descripción**: Devuelve una lista de todos los inventarios.
 
+![Muestra los productos registrados](/images/GET.PNG)
+
+
 ### Crear un nuevo inventario
 **URL**: `/inventarios`  
 **Método**: `POST`  
@@ -101,12 +107,58 @@ A continuacion vamos a documentar las pruebas realizadas con Postman para la API
 **Cuerpo de la solicitud**:  
 ```json
 {
-  "codigo": "ABC123",
-  "descripcion": "Llanta 175/70R13",
-  "familia": "Llantas",
-  "clase": "Auto",
-  "cantidad": 3,
-  "precio": 50.0,
-  "total": 150.0
+  "id": 1,
+  "detalle": "Foco LED",
+  "familia": "Accesorios",
+  "cantidad": 10,
+  "precio": 1,
+  "total": 10
 }
 ```
+
+![Muestra los productos registrados](/images/POST.PNG)
+
+
+### Actualiza un inventario
+**URL**: `/inventarios/{inventario_id}`  
+**Método**: `PUT`  
+**Descripción**: Para actualizar el item de la lista no es el id de la clase sino la posición en la lista empieza desde CERO.   
+
+En HEADERS deben colocar
+
+KEY: `Content-Type`  
+VALUE: `application/json`  
+
+En BODY deben seleccionar RAW y JSON
+
+**Cuerpo de la solicitud**:  
+```json
+{
+  "id": 1,
+  "detalle": "Foco LED",
+  "familia": "Accesorios",
+  "cantidad": 5,
+  "precio": 1,
+  "total": 5
+}
+```
+
+![Muestra los productos registrados](/images/PUT.PNG)
+
+Si listamos el producto saldra asi:
+
+![Muestra los productos registrados](/images/GET_PUT.PNG)
+
+
+**Eliminar un inventario**  
+URL: `/inventarios/{inventario_id}`  
+Método: `DELETE`  
+Descripción: Para eliminar el item de la lista no es el id de la clase sino la posición en la lista empieza desde CERO.  
+
+![Muestra los productos registrados](/images/DELETE.PNG)
+
+Si volvemos a listar, no saldra nada
+
+![Muestra los productos registrados](/images/GET_DELETE.PNG)
+
+Espero que les haga servido de guia, gracias
