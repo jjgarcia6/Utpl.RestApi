@@ -19,11 +19,21 @@ Proyecto para trabajar con API en REST utilizando FastAPI
 ## API de Gestión de Inventarios
 **Este proyecto es una API RESTful construida con FastAPI para la gestión de inventarios de ABCMotor**. La API permite realizar operaciones CRUD (Crear-Create, Leer-Read, Actualizar-Update y Eliminar-Delete) sobre los inventarios.
 
-## Descripción del Proyecto
+## Especificacion del Caso de Estudio 
+
+Para la implementacion del Portal de Comercio Electronico para ABC Motor, es necesario que desarrollemos API's que permitan la integracion de diferentes herramientas y desarrollos externos. Como por ejemplo, un carrito de compras, distintas pasarelas de pago, agendamiento de citas, por nombrar algunas.
+
+Tambien necesitamos integrarnos con el ERP KERP que es el sistema que usa la empresa, con el proposito de obtener el inventario actualizado y poder mantener al dia nuestra oferta de productos online. 
 
 **La API de Gestión de Inventarios está diseñada para facilitar la administración de inventarios de ABC Motor**. Utiliza FastAPI, un framework moderno y de alto rendimiento para construir APIs con Python.
 
 ![Pantalla de FastAPI con los metodos](/images/01_main.PNG)
+
+## C4 Model
+
+Como parte de este proyecto en el archivo `c4model.txt` encontraran el diseño de la Arquitectura C4 Model propuesta, esta desarrollada de forma parcial.
+
+Pueden ejecutar el diseño en `https://structurizr.com`
 
 
 ## Endpoints
@@ -161,4 +171,4 @@ Si volvemos a listar, no saldra nada
 
 ![Muestra los productos registrados](/images/GET_DELETE.PNG)
 
-Espero que les haga servido de guia, gracias
+Espero que les sirva de guia, muchas gracias
