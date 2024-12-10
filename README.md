@@ -31,9 +31,18 @@ Tambien necesitamos integrarnos con el ERP KERP que es el sistema que usa la emp
 
 ## C4 Model
 
-Como parte de este proyecto en el archivo `c4model.txt` encontraran el diseño de la Arquitectura C4 Model propuesta, esta desarrollada de forma parcial.
+Como parte de este proyecto en el archivo `c4model.txt` encontraran el codigo del diseño de la Arquitectura C4 Model propuesta, esta desarrollada de forma parcial.
 
 Pueden ejecutar el diseño en `https://structurizr.com`
+
+Se incluye dos de los diagramas desarrollados.
+
+**Diagrama de Contexto:**
+![Diagrama de Contexto](/images/Contexto.png)
+
+
+**Diagrama de Contenedor**
+![Diagrama de Contenedor](/images/Contenedor.png)
 
 
 ## Endpoints
@@ -134,12 +143,14 @@ A continuacion vamos a documentar las pruebas realizadas con Postman para la API
 **Método**: `PUT`  
 **Descripción**: Para actualizar el item de la lista no es el id de la clase sino la posición en la lista empieza desde CERO.   
 
+**Para poder hacer el PUT deben realizar el paso detallado a continuacion, en caso contrario no podran realizarlo y les saldra error**
+
 En HEADERS deben colocar
 
 KEY: `Content-Type`  
 VALUE: `application/json`  
 
-En BODY deben seleccionar RAW y JSON
+En BODY deben seleccionar `RAW` y `JSON`
 
 **Cuerpo de la solicitud**:  
 ```json
