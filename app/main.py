@@ -37,7 +37,7 @@ inventarios = []
 
 @app.get('/')
 def bienvenida():
-    return {'mensaje': 'Bienvenidos a mi API Interoperabilidad Empresarial - ABC Motor'}
+    return {'mensaje': 'Bienvenidos a mi API Interoperabilidad Empresarial - ABC Motor - Venta de llantas, baterias y lubricantes'}
 
 
 # Ruta para obtener todos los artículos almacenados en la lista.
