@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-SQLALCHEMY_DATABASE_URL = 'postgresql://postgres:postgres@localhost/ordertrackdb'
+SQLALCHEMY_DATABASE_URL = 'postgresql://postgres:LocalPasswordOnly@localhost/ordertrackdb'
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 

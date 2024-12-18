@@ -1,9 +1,9 @@
 from fastapi import FastAPI, Depends, status
 from typing import List
-from db.database import engine, get_db
-from users import user_model
-from users.user_schemas import UserRequest, UserResponse
-from users.user_model import User
+from app2.db.database import engine, get_db
+from app2.users import user_model
+from app2.users.user_schemas import UserRequest, UserResponse
+from app2.users.user_model import User
 from sqlalchemy.orm import Session
 from datetime import datetime
 
