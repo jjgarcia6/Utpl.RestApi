@@ -3,15 +3,17 @@ from typing import Optional
 from pydantic import BaseModel
 
 
-class Orden(SQLModel, table=True):
+class Inventario(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    producto: str
+    detalle: str
+    familia: str
     cantidad: float
-    tipo: str
     precio: float
     total: float
 
 
-class OrdenActualizacion(BaseModel):
-    precio: Optional[float] = None,
+class InventarioUpdate(BaseModel):
+    detalle: Optional[str] = None
+    familia: Optional[str] = None
     cantidad: Optional[float] = None
+    precio: Optional[float] = None
