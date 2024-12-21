@@ -10,29 +10,19 @@
             "password": "LocalPasswordOnly"
         },
         {
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 5432,
-            "askForPassword": true,
-            "driver": "PostgreSQL",
-            "name": "ordertrackdb con",
-            "database": "ordertrackdb",
-            "username": "postgres"
-        },
-        {
             "pgOptions": {
                 "ssl": {
                     "rejectUnauthorized": true
                 }
             },
             "previewLimit": 50,
-            "server": "dpg-ctg9eqi3esus73aiciag-a.oregon-postgres.render.com",
+            "server": "dpg-cth1a2t2ng1s739j6ovg-a.oregon-postgres.render.com",
             "port": 5432,
             "askForPassword": true,
             "driver": "PostgreSQL",
-            "name": "render-bdorden",
-            "database": "ordenes_t5t9",
-            "username": "user_orden"
+            "name": "render-dbinventario",
+            "database": "dbinventario_087f",
+            "username": "userinventario"
         }
     ]
 }
