@@ -2,7 +2,7 @@ import os
 
 from sqlmodel import create_engine, SQLModel, Session
 
-DATABASE_URL = "postgresql://user_orden:bATZUCQjYguLRZm9gIUXNX3QtNmQle36@dpg-ctg9eqi3esus73aiciag-a.oregon-postgres.render.com/ordenes_t5t9"
+DATABASE_URL = "postgresql://userinventario:7kghDLHb5lSxqwpVRDmCBWA0Vd2rmGwZ@dpg-cth1a2t2ng1s739j6ovg-a.oregon-postgres.render.com/dbinventario_087f"
 
 engine = create_engine(DATABASE_URL, echo=True)
 
